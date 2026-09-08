@@ -33,8 +33,6 @@ npm run dev
 ```
 Open the Vite URL shown in the terminal.
 
-## GitHub submission
-Keep `frontend/` and `backend/` in this same repository. Make the GitHub repository **Public** before submitting.
 
 ## Note
 The classifier is a lightweight demonstration model based on keyword rules. It is not a real-world waste-disposal authority or environmental compliance system.
