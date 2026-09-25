@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {createRoot} from "react-dom/client";
 import {BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend} from "recharts";
 import "./style.css";
+import OCRImport from "./components/OCRImport";
 
 const API="http://127.0.0.1:5000/api";
 const cats=["Organic","Recyclable","Hazardous","General"];
@@ -36,6 +37,7 @@ function App(){
     <form onSubmit={classify} className="form"><input required placeholder="Waste item e.g. plastic bottle" value={form.name} onChange={e=>setForm({...form,name:e.target.value})}/><input required type="number" min="0.01" step="0.01" placeholder="Weight (kg)" value={form.weight} onChange={e=>setForm({...form,weight:e.target.value})}/><button disabled={loading}>{loading?"Classifying...":"Classify Waste"}</button></form>
     {prediction&&<div className="result"><div className="resultIcon">♻</div><div><b>{prediction.category}</b><p>{prediction.recommendation}</p><small>Confidence: {prediction.confidence}%</small></div></div>}
    </section>
+   <OCRImport onSaved={load}/>
    <section id="records" className="panel"><div className="row"><h2>Recent Records</h2><button className="secondary" onClick={load}>Refresh</button></div>
     <div className="tableWrap"><table><thead><tr><th>Item</th><th>Weight</th><th>Category</th><th>Confidence</th><th>Action</th></tr></thead><tbody>
      {records.length?records.map(r=><tr key={r.id}><td>{r.name}</td><td>{r.weight} kg</td><td><span className="badge">{r.category}</span></td><td>{r.confidence}%</td><td><button className="delete" onClick={()=>remove(r.id)}>Delete</button></td></tr>):<tr><td colSpan="5" className="empty">No records yet. Classify your first item above.</td></tr>}
