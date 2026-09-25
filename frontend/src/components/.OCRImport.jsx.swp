@@ -134,7 +134,7 @@ explore default function OCRImport() {
 
     if(file.type==="application/pdf"){
     extractedText=await ocrPDF(file);
-    }else{
+    }else(
     extractedText = await ocrImage(file);
     }
 
@@ -187,19 +187,18 @@ explore default function OCRImport() {
     setText("");
     setName("");
     setWeight("");
-    setFile(null);
+    setFile(null)'
 
     if(onsaved){
     onSaved();
     }
-    }catch(err);
+    }catch(err):
     setError(err.message || "not create the waste record ");
     }
     };
 
 
-    return(
-
+    return{
     <section className="panel">
     <h2> ocr waste log import </h2>
 
@@ -207,12 +206,13 @@ explore default function OCRImport() {
     upload a waste log photo or pdf </p>
 
 
-    <input type="file"
+    <inputtype="file"
     accept=".png,.jpg,.jpeg,.pdf"
     onChange={handleFileChange}/>
 
-    {file && (
-    <p>selected file:<b>{file.name}<b></p>
+    {file &&(
+    <p>selected file:<b>Pfile.name}<b>
+    </p>
     )}
 
     <button
@@ -274,9 +274,8 @@ explore default function OCRImport() {
 
               <br />
 
-              <button onClick={handleConfirm}
-              disabled={saving}>
-              confirm and create record
+              <button onClick={handleConfirm>
+              confirm & create record
               </button>
         </div>
       )}
